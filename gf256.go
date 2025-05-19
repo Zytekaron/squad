@@ -1,6 +1,9 @@
 package squad
 
-import "io"
+import (
+	"fmt"
+	"io"
+)
 
 type point struct {
 	x, y byte
@@ -122,7 +125,7 @@ func makePolynomial(rng io.Reader, intercept, degree uint8) ([]byte, error) {
 
 	_, err := rng.Read(coefficients[1:])
 	if err != nil {
-		return nil, err
+		return nil, fmt.Errorf("reading random bytes: %w", err)
 	}
 	return coefficients, nil
 }

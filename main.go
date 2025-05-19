@@ -46,7 +46,7 @@ func Split(secret []byte, n, k byte) (map[byte][]byte, error) {
 	for i := 0; i < len(secret); i++ {
 		coefficients, err := makePolynomial(rand.Reader, secret[i], degree)
 		if err != nil {
-			return nil, fmt.Errorf("error generating polynomial: %w", err)
+			return nil, fmt.Errorf("generating polynomial: %w", err)
 		}
 
 		for x := byte(1); x <= n; x++ {
