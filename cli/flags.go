@@ -30,8 +30,14 @@ func NewFlagSet() *FlagSet {
 
 // AddFlag adds a new valid flag to the set
 func (fs *FlagSet) AddFlag(name, shorthand, description string, hasValue bool) {
-	fs.Flags[name] = Flag{Name: name, Shorthand: shorthand, Description: description, HasValue: hasValue}
-	fs.Flags[shorthand] = Flag{Name: name, Shorthand: shorthand, Description: description, HasValue: hasValue}
+	flag := Flag{
+		Name:        name,
+		Shorthand:   shorthand,
+		Description: description,
+		HasValue:    hasValue,
+	}
+	fs.Flags[name] = flag
+	fs.Flags[shorthand] = flag
 }
 
 // Parse parses command-line arguments and collects remaining args
