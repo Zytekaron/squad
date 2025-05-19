@@ -24,11 +24,11 @@ import (
 // is unaware of situations where < k shares are combined.
 //
 // Constraints:
-//   - k <= n <= 255
 //   - 2 <= k <= 255
+//   - k <= n <= 255
 //
 // Reference: https://en.wikipedia.org/wiki/Shamir's_secret_sharing
-func Split(secret []byte, n, k byte) (map[byte][]byte, error) {
+func Split(secret []byte, k, n byte) (map[byte][]byte, error) {
 	if k < 2 {
 		panic("k must be at least 2")
 	}
